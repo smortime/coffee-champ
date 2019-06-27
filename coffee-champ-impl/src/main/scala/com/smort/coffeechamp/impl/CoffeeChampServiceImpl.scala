@@ -1,10 +1,9 @@
 package com.smort.coffeechamp.impl
 
+import akka.Done
 import com.smort.coffeechamp.api
-import com.smort.coffeechamp.api.CoffeeChampService
+import com.smort.coffeechamp.api.{CoffeeChampService, CoffeeReview}
 import com.lightbend.lagom.scaladsl.api.ServiceCall
-import com.lightbend.lagom.scaladsl.api.broker.Topic
-import com.lightbend.lagom.scaladsl.broker.TopicProducer
 import com.lightbend.lagom.scaladsl.persistence.{EventStreamElement, PersistentEntityRegistry}
 
 /**
@@ -12,33 +11,9 @@ import com.lightbend.lagom.scaladsl.persistence.{EventStreamElement, PersistentE
   */
 class CoffeeChampServiceImpl(persistentEntityRegistry: PersistentEntityRegistry) extends CoffeeChampService {
 
-  override def hello(id: String) = ServiceCall { _ =>
-    // Look up the Coffee Champ entity for the given ID.
-    val ref = persistentEntityRegistry.refFor[CoffeeChampEntity](id)
+  def submitReview(name: String): ServiceCall[CoffeeReview, Done] = ServiceCall { request =>
+    val ref = persistentEntityRegistry.refFor[CoffeeChampEntity](name)
 
-    // Ask the entity the Hello command.
-    ref.ask(Hello(id))
-  }
-
-  override def useGreeting(id: String) = ServiceCall { request =>
-    // Look up the Coffee Champ entity for the given ID.
-    val ref = persistentEntityRegistry.refFor[CoffeeChampEntity](id)
-
-    // Tell the entity to use the greeting message specified.
-    ref.ask(UseGreetingMessage(request.message))
-  }
-
-
-  override def greetingsTopic(): Topic[api.GreetingMessageChanged] =
-    TopicProducer.singleStreamWithOffset {
-      fromOffset =>
-        persistentEntityRegistry.eventStream(CoffeeChampEvent.Tag, fromOffset)
-          .map(ev => (convertEvent(ev), ev.offset))
-    }
-
-  private def convertEvent(helloEvent: EventStreamElement[CoffeeChampEvent]): api.GreetingMessageChanged = {
-    helloEvent.event match {
-      case GreetingMessageChanged(msg) => api.GreetingMessageChanged(helloEvent.entityId, msg)
-    }
+    ref.ask(SubmitReviewCommand(request.name, request.rating, request.review))
   }
 }
