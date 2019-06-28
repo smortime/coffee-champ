@@ -1,6 +1,6 @@
 package com.smort.coffeechamp.impl
 
-import java.time.LocalDateTime
+import java.time.{Instant, OffsetDateTime}
 
 import akka.Done
 import com.lightbend.lagom.scaladsl.persistence.{AggregateEvent, AggregateEventTag, PersistentEntity}
@@ -26,27 +26,31 @@ class CoffeeChampEntity extends PersistentEntity {
     * is a function of the current state to a set of actions.
     */
   override def behavior: Behavior = {
-    case CoffeeChampState(reviews) => Actions()
-      .onCommand[SubmitReviewCommand, Done] {
-      case (SubmitReviewCommand(name, review, rating), ctx, state) =>
+    Actions().onCommand[SetPreferences, Done] {
+      case (SetPreferences(preferences), ctx, _) =>
         ctx.thenPersist(
-          AddToReviewsEvent(review)
+          PreferencesSet(preferences, Instant.now())
         ) { _ =>
           ctx.reply(Done)
         }
-    }.onEvent {
-      case (AddToReviewsEvent(review), state) =>
-        CoffeeChampState(review :: state.reviews)
     }
   }
+
+  def eventHandlers: EventHandler = {
+    case (PreferencesSet(preferences: List[String], _), state) => state.setPreferences(preferences)
+  }
+
 }
 
 
 /**
   * The current state held by the persistent entity.
   */
-case class CoffeeChampState(reviews: List[String])
-case class AddToReviewsEvent(review: String) extends CoffeeChampEvent
+case class CoffeeChampState(sPreferences: List[String]) {
+  def setPreferences(preferences: List[String]) = {
+    copy(sPreferences = preferences ++ sPreferences)
+  }
+}
 
 object CoffeeChampState {
   /**
@@ -72,12 +76,28 @@ object CoffeeChampEvent {
   val Tag: AggregateEventTag[CoffeeChampEvent] = AggregateEventTag[CoffeeChampEvent]
 }
 
+case class PreferencesSet(preferences: List[String], evenTime: Instant) extends CoffeeChampEvent
+
+object PreferencesSet {
+  implicit val format: Format[PreferencesSet] = Json.format
+}
+
 /**
   * This interface defines all the commands that the CoffeeChampEntity supports.
   */
 sealed trait CoffeeChampCommand[R] extends ReplyType[R]
-final case class SubmitReviewCommand(name: String, review: String, rating: String) extends CoffeeChampCommand[Done]
+case class SetPreferences(preferences: List[String]) extends CoffeeChampCommand[Done]
 
+object SetPreferences {
+  implicit val format: Format[SetPreferences] = Json.format
+}
+
+
+case class CoffeeChampException(message: String) extends RuntimeException(message)
+
+object CoffeeChampException {
+  implicit val format: Format[CoffeeChampException] = Json.format[CoffeeChampException]
+}
 
 
 
@@ -92,6 +112,8 @@ final case class SubmitReviewCommand(name: String, review: String, rating: Strin
   */
 object CoffeeChampSerializerRegistry extends JsonSerializerRegistry {
   override def serializers: Seq[JsonSerializer[_]] = Seq(
-    JsonSerializer[CoffeeChampState]
+    JsonSerializer[CoffeeChampState],
+    JsonSerializer[PreferencesSet],
+    JsonSerializer[SetPreferences]
   )
 }

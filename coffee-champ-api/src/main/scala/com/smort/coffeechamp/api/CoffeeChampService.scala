@@ -6,7 +6,7 @@ import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
 import play.api.libs.json.{Format, Json}
 
 object CoffeeChampService  {
-  val TOPIC_NAME = "greetings"
+  val TOPIC_NAME = "coffee-champ"
 }
 
 /**
@@ -18,22 +18,22 @@ object CoffeeChampService  {
 trait CoffeeChampService extends Service {
 
 
-  def submitReview(name: String): ServiceCall[CoffeeReview, Done]
+  def setPreferences(id: String): ServiceCall[CoffeePreferences, Done]
 
   override final def descriptor: Descriptor = {
     import Service._
     // @formatter:off
     named("coffee-champ")
       .withCalls(
-        restCall(Method.POST, "/api/review/:name/:review/:rating", submitReview _)
+        restCall(Method.POST, "/api/preferences/:id", setPreferences _)
       )
       .withAutoAcl(true)
     // @formatter:on
   }
 }
 
-case class CoffeeReview(name: String, review: String, rating: String)
+case class CoffeePreferences(preferences: List[String])
 
-object CoffeeReview {
-  implicit val format: Format[CoffeeReview] = Json.format[CoffeeReview]
+object CoffeePreferences {
+  implicit val format: Format[CoffeePreferences] = Json.format
 }
