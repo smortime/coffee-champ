@@ -1,32 +1,23 @@
-organization in ThisBuild := "com.smort"
-version in ThisBuild := "1.0-SNAPSHOT"
+name := "coffee-champ"
 
-// the Scala version that will be used for cross-compiled libraries
-scalaVersion in ThisBuild := "2.12.8"
+version := "0.1"
 
-val macwire = "com.softwaremill.macwire" %% "macros" % "2.3.0" % "provided"
-val scalaTest = "org.scalatest" %% "scalatest" % "3.0.4" % Test
+scalaVersion := "2.12.8"
 
-lazy val `coffee-champ` = (project in file("."))
-  .aggregate(`coffee-champ-api`, `coffee-champ-impl`)
+organization := "com.smort"
 
-lazy val `coffee-champ-api` = (project in file("coffee-champ-api"))
-  .settings(
-    libraryDependencies ++= Seq(
-      lagomScaladslApi
-    )
+libraryDependencies ++= {
+  val akkaVersion = "2.5.14"
+  val akkaHttp = "10.1.8"
+  Seq(
+    "com.typesafe.akka" %% "akka-actor"      % akkaVersion,
+    "com.typesafe.akka" %% "akka-http-core"  % akkaHttp,
+    "com.typesafe.akka" %% "akka-http"       % akkaHttp,
+    "com.typesafe.play" %% "play-ws-standalone-json"       % "1.1.8",
+    "com.typesafe.akka" %% "akka-slf4j"      % akkaVersion,
+    "ch.qos.logback"    %  "logback-classic" % "1.2.3",
+    "de.heikoseeberger" %% "akka-http-play-json"   % "1.17.0",
+    "com.typesafe.akka" %% "akka-testkit"    % akkaVersion   % "test",
+    "org.scalatest"     %% "scalatest"       % "3.0.5"       % "test"
   )
-
-lazy val `coffee-champ-impl` = (project in file("coffee-champ-impl"))
-  .enablePlugins(LagomScala)
-  .settings(
-    libraryDependencies ++= Seq(
-      lagomScaladslPersistenceCassandra,
-      lagomScaladslKafkaBroker,
-      lagomScaladslTestKit,
-      macwire,
-      scalaTest
-    )
-  )
-  .settings(lagomForkedTestSettings)
-  .dependsOn(`coffee-champ-api`)
+}
