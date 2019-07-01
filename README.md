@@ -22,7 +22,11 @@ sbt run
 * 0.0.1
     * Work in progress
 
-## Contributors
+## Project Owner
 
 * Schuyler Mortimer – schuymortimer@gmail.com
+
+## Special Thanks
+
+* Kaolin Hart - UI/UX Consultant 
 
