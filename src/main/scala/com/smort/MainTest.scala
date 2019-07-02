@@ -20,7 +20,7 @@ object MainTest extends App {
 
   for {
     response <- recommendationResult
-  } yield println(s"You'd really like $response")
+  } yield println(s"You'd really like $response coffees")
 
   Thread.sleep(5000)
 
