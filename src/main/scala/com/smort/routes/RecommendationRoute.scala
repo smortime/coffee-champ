@@ -6,9 +6,11 @@ import akka.http.scaladsl.server.Route
 import com.smort.helpers.{ JsonHelper, Preferences, Recommendation }
 import com.typesafe.scalalogging.LazyLogging
 
+import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
+
 class RecommendationRoute extends JsonHelper with LazyLogging {
 
-  def route(): Route = {
+  def route(): Route = cors() {
     path("create-recommendation") {
       post {
         entity(as[Preferences]) { preferences =>
@@ -16,7 +18,7 @@ class RecommendationRoute extends JsonHelper with LazyLogging {
           complete(StatusCodes.Created, Recommendation("Guatemalan", preferences.items))
         }
       } ~ get {
-        complete(StatusCodes.MethodNotAllowed, "GET is not supported for create-recommendation endpont")
+        complete(StatusCodes.MethodNotAllowed, "GET is not supported for create-recommendation endpoint")
       }
     }
   }

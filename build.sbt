@@ -19,5 +19,6 @@ libraryDependencies ++= {
     "ch.qos.logback" % "logback-classic" % "1.2.3",
     "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+    "ch.megard" %% "akka-http-cors" % "0.4.1",
     "org.scalatest" %% "scalatest" % "3.0.5" % "test")
 }
