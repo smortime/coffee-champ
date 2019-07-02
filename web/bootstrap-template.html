@@ -71,7 +71,7 @@
                 dataType: 'text',
                 type: 'post',
                 contentType: 'application/json',
-                data: JSON.stringify({items: [$("#coffeeText").val()]}),
+                data: JSON.stringify({items: $("#coffeeText").val().trim().split(',')}),
                 success: function(data, textStatus, jQxhr){
                     var items = JSON.parse(data);
                     var htmlResponse = '<ul>';
