@@ -1,6 +1,6 @@
 package com.smort
 
-import akka.actor.{ActorSystem, Props}
+import akka.actor.{ ActorSystem, Props }
 import akka.pattern._
 import akka.util.Timeout
 import com.smort.actors._

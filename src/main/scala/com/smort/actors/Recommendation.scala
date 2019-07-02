@@ -1,6 +1,6 @@
 package com.smort.actors
 
-import akka.actor.{Actor, ActorLogging}
+import akka.actor.{ Actor, ActorLogging }
 import akka.pattern._
 
 import scala.concurrent.ExecutionContext.Implicits.global

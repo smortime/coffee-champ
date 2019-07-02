@@ -1,20 +1,18 @@
 package com.smort.coffeechamp.api
 
 import akka.Done
-import play.api.libs.json.{Format, Json}
 
-object CoffeeChampService  {
+object CoffeeChampService {
   val TOPIC_NAME = "coffee-champ"
 }
 
 /**
-  * The Coffee Champ service interface.
-  * <p>
-  * This describes everything that Lagom needs to know about how to serve and
-  * consume the CoffeeChampService.
-  */
+ * The Coffee Champ service interface.
+ * <p>
+ * This describes everything that Lagom needs to know about how to serve and
+ * consume the CoffeeChampService.
+ */
 trait CoffeeChampService extends Service {
-
 
   def setPreferences(id: String): ServiceCall[CoffeePreferences, Done]
 

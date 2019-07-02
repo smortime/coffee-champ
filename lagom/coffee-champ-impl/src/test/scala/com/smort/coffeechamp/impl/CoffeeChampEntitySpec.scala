@@ -4,14 +4,15 @@ import akka.actor.ActorSystem
 
 class CoffeeChampEntitySpec extends WordSpec with Matchers with BeforeAndAfterAll {
 
-  private val system = ActorSystem("CoffeeChampEntitySpec",
-    JsonSerializerRegistry.actorSystemSetupFor(CoffeeChampSerializerRegistry))
+  private val system =
+    ActorSystem("CoffeeChampEntitySpec", JsonSerializerRegistry.actorSystemSetupFor(CoffeeChampSerializerRegistry))
 
   override protected def afterAll(): Unit = {
     TestKit.shutdownActorSystem(system)
   }
 
-  private def withTestDriver(block: PersistentEntityTestDriver[CoffeeChampCommand[_], CoffeeChampEvent, CoffeeChampState] => Unit): Unit = {
+  private def withTestDriver(
+      block: PersistentEntityTestDriver[CoffeeChampCommand[_], CoffeeChampEvent, CoffeeChampState] => Unit): Unit = {
     val driver = new PersistentEntityTestDriver(system, new CoffeeChampEntity, "coffee-champ-1")
     block(driver)
     driver.getAllIssues should have size 0

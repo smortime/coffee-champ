@@ -2,10 +2,7 @@ package com.smort.coffeechamp.impl
 
 class CoffeeChampServiceSpec extends AsyncWordSpec with Matchers with BeforeAndAfterAll {
 
-  private val server = ServiceTest.startServer(
-    ServiceTest.defaultSetup
-      .withCassandra()
-  ) { ctx =>
+  private val server = ServiceTest.startServer(ServiceTest.defaultSetup.withCassandra()) { ctx =>
     new CoffeeChampApplication(ctx) with LocalServiceLocator
   }
 

@@ -9,7 +9,7 @@ import com.smort.routes.RecommendationRoute
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.io.StdIn
-import scala.util.{Failure, Success}
+import scala.util.{ Failure, Success }
 
 object Server extends App with LazyLogging {
 
@@ -39,8 +39,6 @@ object Server extends App with LazyLogging {
   }
 
   StdIn.readLine()
-  httpServerFuture
-    .flatMap(_.unbind())
-    .onComplete(_ => system.terminate())
+  httpServerFuture.flatMap(_.unbind()).onComplete(_ => system.terminate())
 
 }

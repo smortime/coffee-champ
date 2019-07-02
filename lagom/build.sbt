@@ -7,15 +7,10 @@ scalaVersion in ThisBuild := "2.12.8"
 val macwire = "com.softwaremill.macwire" %% "macros" % "2.3.0" % "provided"
 val scalaTest = "org.scalatest" %% "scalatest" % "3.0.4" % Test
 
-lazy val `coffee-champ` = (project in file("."))
-  .aggregate(`coffee-champ-api`, `coffee-champ-impl`)
+lazy val `coffee-champ` = (project in file(".")).aggregate(`coffee-champ-api`, `coffee-champ-impl`)
 
-lazy val `coffee-champ-api` = (project in file("coffee-champ-api"))
-  .settings(
-    libraryDependencies ++= Seq(
-      lagomScaladslApi
-    )
-  )
+lazy val `coffee-champ-api` =
+  (project in file("coffee-champ-api")).settings(libraryDependencies ++= Seq(lagomScaladslApi))
 
 lazy val `coffee-champ-impl` = (project in file("coffee-champ-impl"))
   .enablePlugins(LagomScala)
@@ -25,8 +20,6 @@ lazy val `coffee-champ-impl` = (project in file("coffee-champ-impl"))
       lagomScaladslKafkaBroker,
       lagomScaladslTestKit,
       macwire,
-      scalaTest
-    )
-  )
+      scalaTest))
   .settings(lagomForkedTestSettings)
   .dependsOn(`coffee-champ-api`)

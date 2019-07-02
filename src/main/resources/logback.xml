@@ -8,9 +8,9 @@
         </encoder>
     </appender>
 
-    <logger name="akka" level="INFO" />
+    <logger name="akka" level="INFO"/>
 
-    <logger name="com.smort" level="INFO" />
+    <logger name="com.smort" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>

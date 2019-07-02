@@ -14,7 +14,7 @@ class CoffeeChampLoader extends LagomApplicationLoader {
 }
 
 abstract class CoffeeChampApplication(context: LagomApplicationContext)
-  extends LagomApplication(context)
+    extends LagomApplication(context)
     with CassandraPersistenceComponents
     with LagomKafkaComponents
     with AhcWSComponents {
