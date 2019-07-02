@@ -1,10 +1,6 @@
 package com.smort.coffeechamp.impl
 
 import akka.Done
-import com.smort.coffeechamp.api.{CoffeeChampService, CoffeePreferences}
-import com.lightbend.lagom.scaladsl.api.ServiceCall
-import com.lightbend.lagom.scaladsl.api.transport.BadRequest
-import com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry
 
 import scala.concurrent.ExecutionContext
 

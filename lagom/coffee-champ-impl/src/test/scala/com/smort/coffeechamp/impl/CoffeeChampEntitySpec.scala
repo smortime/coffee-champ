@@ -1,10 +1,6 @@
 package com.smort.coffeechamp.impl
 
 import akka.actor.ActorSystem
-import akka.testkit.TestKit
-import com.lightbend.lagom.scaladsl.testkit.PersistentEntityTestDriver
-import com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry
-import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
 class CoffeeChampEntitySpec extends WordSpec with Matchers with BeforeAndAfterAll {
 

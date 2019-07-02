@@ -1,8 +1,6 @@
 package com.smort.coffeechamp.api
 
-import akka.{Done, NotUsed}
-import com.lightbend.lagom.scaladsl.api.transport.Method
-import com.lightbend.lagom.scaladsl.api.{Descriptor, Service, ServiceCall}
+import akka.Done
 import play.api.libs.json.{Format, Json}
 
 object CoffeeChampService  {
@@ -21,7 +19,6 @@ trait CoffeeChampService extends Service {
   def setPreferences(id: String): ServiceCall[CoffeePreferences, Done]
 
   override final def descriptor: Descriptor = {
-    import Service._
     // @formatter:off
     named("coffee-champ")
       .withCalls(

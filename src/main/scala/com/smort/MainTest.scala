@@ -5,8 +5,8 @@ import akka.pattern._
 import akka.util.Timeout
 import com.smort.actors._
 import com.smort.messages.RecommendationSystemProtocol.Generate
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 object MainTest extends App {
