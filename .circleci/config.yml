@@ -33,7 +33,7 @@ jobs:
           name: Run scala tests
           command: sbt test
   deploy:
-    machine
+    machine:
       enabled: true
     steps:
       - checkout
