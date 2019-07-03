@@ -1,5 +1,6 @@
 enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
+enablePlugins(AshScriptPlugin)
 
 name := "coffee-champ"
 version := "0.1"

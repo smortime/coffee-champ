@@ -14,7 +14,7 @@ jobs:
           command: |
             docker login --username $HUB_USERNAME --password $HUB_PASSWORD &&
             docker tag coffee-champ:0.1 smort/coffee-champ:latest &&
-            docker tag smort/coffee-champ:latest smort/coffee-champ:$CIRCLE_BUILD_NUM
+            docker tag smort/coffee-champ:latest smort/coffee-champ:$CIRCLE_BUILD_NUM &&
             docker push smort/coffee-champ
   test:
     docker:
@@ -32,6 +32,12 @@ jobs:
       - run:
           name: Run scala tests
           command: sbt test
+  deploy:
+    steps:
+      - checkout
+      - run:
+          name: Deploy Web
+          command: scp ~/web/index.html $DROPLET_USER@DROPLET_HOST:/srv/www/coffeechamp.dev/
 
 workflows:
   version: 2
@@ -44,6 +50,12 @@ workflows:
       - build:
           requires:
             - test
+          filters:
+            branches:
+              only: master
+      - build:
+          requires:
+            - build
           filters:
             branches:
               only: master

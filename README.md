@@ -30,4 +30,5 @@ sbt run
 ## Special Thanks
 
 * Kaolin Hart - UI/UX Consultant 
+* Tho Ha - Coffee SME
 

@@ -26,8 +26,8 @@ object Server extends App with LazyLogging {
   implicit val ec = system.dispatcher
 
   // TODO: Move to config file
-  val host = "0.0.0.0"
-  val port = 8080
+  val host = sys.env("HOST")
+  val port = sys.env("PORT").toInt
 
   val heartbeat: Route = cors() {
     get {
