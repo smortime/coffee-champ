@@ -14,6 +14,7 @@ jobs:
           command: |
             docker login --username $HUB_USERNAME --password $HUB_PASSWORD &&
             docker tag coffee-champ:0.1 smort/coffee-champ:latest &&
+            docker tag smort/coffee-champ:$CIRCLE_BUILD_NUM
             docker push smort/coffee-champ
   test:
     docker:
