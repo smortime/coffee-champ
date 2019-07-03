@@ -2,16 +2,18 @@ package com.smort
 
 import java.io.InputStream
 import java.security.{ KeyStore, SecureRandom }
-import javax.net.ssl.{ KeyManagerFactory, SSLContext, TrustManagerFactory }
 
+import javax.net.ssl.{ KeyManagerFactory, SSLContext, TrustManagerFactory }
 import akka.actor.ActorSystem
 import akka.http.scaladsl.{ ConnectionContext, Http, HttpsConnectionContext }
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import akka.stream.ActorMaterializer
-import com.smort.routes.RecommendationRoute
+import com.smort.routes.{ RecommendationRoute, RestApi }
 import com.typesafe.scalalogging.LazyLogging
 import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
+import akka.util.Timeout
+import scala.concurrent.duration._
 import com.typesafe.sslconfig.akka.AkkaSSLConfig
 
 import scala.io.StdIn
@@ -19,7 +21,7 @@ import scala.util.{ Failure, Success }
 
 object Server extends App with LazyLogging {
 
-  implicit val system = ActorSystem("coffee-chap")
+  implicit val system = ActorSystem("coffee-champ")
   implicit val materializer = ActorMaterializer()
   implicit val ec = system.dispatcher
 
@@ -33,7 +35,7 @@ object Server extends App with LazyLogging {
     }
   }
 
-  val recommendationRoutes = new RecommendationRoute().route()
+  val recommendationRoutes = new RestApi(system, Timeout(30 seconds)).route()
 
   val routes: Route = recommendationRoutes ~ heartbeat
 

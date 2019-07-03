@@ -15,7 +15,7 @@ class Recommendation extends Actor with ActorLogging {
       getRecommendation(name).pipeTo(sender)
   }
 
-  def getRecommendation(preferences: String): Future[String] = Future {
-    "Guatemalan"
+  def getRecommendation(preferences: Array[String]): Future[String] = Future {
+    "Guatemalan coffee is great!"
   }
 }
