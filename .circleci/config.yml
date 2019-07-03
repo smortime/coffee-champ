@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
+    branches:
+      - master
     steps:
       - checkout
       - restore_cache:
@@ -12,3 +14,7 @@ jobs:
           paths: [ "~/.m2", "~/.ivy2", "~/.cache/coursier" ]
           key: scala-library-dependencies-{{ checksum "build.sbt" }}
       - run: sbt test
+      - run: sbt docker:publishLocal
+      - run: docker login --username ${HUB_USERNAME} --password ${HUB_PASSWORD}
+      - run: docker tag coffee-champ:0.1 smort/coffee-champ:latest
+      - run: docker push smort/coffee-champ

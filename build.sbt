@@ -24,3 +24,5 @@ libraryDependencies ++= {
     "ch.megard" %% "akka-http-cors" % "0.4.1",
     "org.scalatest" %% "scalatest" % "3.0.5" % "test")
 }
+
+dockerBaseImage := "openjdk:jre-alpine"

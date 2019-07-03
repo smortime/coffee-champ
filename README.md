@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/smortime/coffee-champ.svg?style=svg)](https://circleci.com/gh/smortime/coffee-champ)
 # Coffee Champ
 > Coffee recommendations are just a click away.
 
