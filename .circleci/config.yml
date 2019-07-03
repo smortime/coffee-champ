@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Deploy Server
           command: |
-            ssh -v $DROPLET_USER@$DROPLET_HOST "docker login --username $HUB_USERNAME --password $HUB_PASSWORD && docker pull smort/coffee-champ:latest && docker run -e CERT_PASSWORD=$CERT_PASSWORD -e HOST=$API_HOST -e PORT=$API_PORT -p 8080:8080 --name coffee-champ -d smort/coffee-champ:latest"
+            ssh -v $DROPLET_USER@$DROPLET_HOST "docker login --username $HUB_USERNAME --password $HUB_PASSWORD && docker stop coffee-champ && docker rmi -f smort/coffee-champ && docker pull smort/coffee-champ:latest && docker run -e CERT_PASSWORD=$CERT_PASSWORD -e HOST=$API_HOST -e PORT=$API_PORT -p 8080:8080 --name coffee-champ -d smort/coffee-champ:latest"
 
 workflows:
   version: 2
