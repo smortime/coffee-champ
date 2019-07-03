@@ -38,6 +38,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Get Contents
+          command: pwd && ls -la
+      - run:
           name: Deploy Web
           command: scp ~/web/index.html $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
 
