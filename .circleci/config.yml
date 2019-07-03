@@ -43,6 +43,14 @@ jobs:
       - run:
           name: Deploy Web
           command: scp ./web/index.html $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
+      - run:
+          name: Deploy Server
+          command: |
+            docker login --username $HUB_USERNAME --password $HUB_PASSWORD &&
+            docker stop coffee-champ
+            rmi -f smort/coffee-champ
+            docker pull smort/coffee-champ:latest
+            docker run -e CERT_PASSWORD=$CERT_PASSWORD -e HOST=$API_HOST -e PORT=$API_PORT -p 8080:8080 --name coffee-champ -d smort/coffee-champ:latest
 
 workflows:
   version: 2
