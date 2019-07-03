@@ -14,6 +14,6 @@ jobs:
           key: scala-library-dependencies-{{ checksum "build.sbt" }}
       - run: sbt test
       - run: sbt docker:publishLocal
-      - run: docker login --username ${HUB_USERNAME} --password ${HUB_PASSWORD}
+      - run: docker login --username $HUB_USERNAME --password $HUB_PASSWORD
       - run: docker tag coffee-champ:0.1 smort/coffee-champ:latest
       - run: docker push smort/coffee-champ
