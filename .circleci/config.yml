@@ -34,6 +34,7 @@ jobs:
           command: sbt test
   deploy:
     machine
+      enabled: true
     steps:
       - checkout
       - run:
