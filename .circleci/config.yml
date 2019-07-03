@@ -5,6 +5,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
+      - setup_remote_docker
       - restore_cache:
           key: scala-library-dependencies-{{ checksum "build.sbt" }}
       - run: sbt test:compile
