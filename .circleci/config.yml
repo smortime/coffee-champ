@@ -6,13 +6,43 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run:
+          name: Build docker image on local
+          command: sbt docker:publishLocal
+      - run:
+          name: Push docker image
+          command: |
+            docker login --username $HUB_USERNAME --password $HUB_PASSWORD &&
+            docker tag coffee-champ:0.1 smort/coffee-champ:latest &&
+            docker push smort/coffee-champ
+  test:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
       - restore_cache:
           key: scala-library-dependencies-{{ checksum "build.sbt" }}
-      - run: sbt test:compile
+      - run:
+          name: Test app compiles
+          command: sbt test:compile
       - save_cache:
           paths: [ "~/.m2", "~/.ivy2", "~/.cache/coursier" ]
           key: scala-library-dependencies-{{ checksum "build.sbt" }}
-      - run: sbt docker:publishLocal
-      - run: docker login --username $HUB_USERNAME --password $HUB_PASSWORD
-      - run: docker tag coffee-champ:0.1 smort/coffee-champ:latest
-      - run: docker push smort/coffee-champ
+      - run:
+          name: Run scala tests
+          command: sbt test
+
+workflows:
+  version: 2
+  test_build_deploy:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: master
+      - build:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
