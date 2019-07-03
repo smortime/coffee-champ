@@ -53,7 +53,7 @@ workflows:
           filters:
             branches:
               only: master
-      - build:
+      - deploy:
           requires:
             - build
           filters:
