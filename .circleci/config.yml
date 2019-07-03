@@ -39,7 +39,7 @@ jobs:
       - checkout
       - run:
           name: Deploy Web
-          command: scp ~/web/index.html $DROPLET_USER@DROPLET_HOST:/srv/www/coffeechamp.dev/
+          command: scp ~/web/index.html $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
 
 workflows:
   version: 2
