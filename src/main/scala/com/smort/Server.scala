@@ -24,7 +24,7 @@ object Server extends App with LazyLogging {
   implicit val ec = system.dispatcher
 
   // TODO: Move to config file
-  val host = "127.0.0.1"
+  val host = "0.0.0.0"
   val port = 8080
 
   val heartbeat: Route = cors() {
@@ -65,8 +65,4 @@ object Server extends App with LazyLogging {
       logger.error(s"Akka failed to start", e)
       system.terminate()
   }
-
-  StdIn.readLine()
-  httpServerFuture.flatMap(_.unbind()).onComplete(_ => system.terminate())
-
 }

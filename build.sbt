@@ -1,10 +1,12 @@
+enablePlugins(JavaAppPackaging)
+enablePlugins(DockerPlugin)
+
 name := "coffee-champ"
-
 version := "0.1"
-
 scalaVersion := "2.12.8"
-
 organization := "com.smort"
+
+mainClass in Compile := Some("com.smort.Server")
 
 libraryDependencies ++= {
   val akkaVersion = "2.5.19"
