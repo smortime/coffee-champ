@@ -40,7 +40,7 @@ object Server extends App with LazyLogging {
   val routes: Route = recommendationRoutes ~ heartbeat
 
   // Mannual HTTPS setup
-  val password: Array[Char] = sys.env("CERT_PASSWORD").toCharArray
+  val password: Array[Char] = sys.env.getOrElse("CERT_PASSWORD", "").toCharArray
 
   val ks: KeyStore = KeyStore.getInstance("PKCS12")
   val keystore: InputStream =
