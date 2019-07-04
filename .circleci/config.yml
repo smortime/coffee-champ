@@ -11,7 +11,7 @@ jobs:
           command: pwd && ls -la
       - run:
           name: Grab cert
-          command: scp -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_HOST:/etc/letsencrypt/live/coffeechamp.dev/server.p12 /src/main/resources/keys/
+          command: scp -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_HOST:/etc/letsencrypt/live/coffeechamp.dev/server.p12 ./src/main/resources/keys/
       - run:
           name: Build docker image on local
           command: sbt docker:publishLocal
