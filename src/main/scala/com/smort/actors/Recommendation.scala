@@ -16,6 +16,6 @@ class Recommendation extends Actor with ActorLogging {
   }
 
   def getRecommendation(preferences: Array[String]): Future[String] = Future {
-    "Guatemalan"
+    "Ethiopian"
   }
 }
