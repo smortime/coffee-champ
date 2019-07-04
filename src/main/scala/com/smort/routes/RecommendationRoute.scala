@@ -6,11 +6,11 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.pattern._
 import akka.util.Timeout
-import com.smort.helpers.{ JsonHelper, Preferences, Recommendation }
-import com.typesafe.scalalogging.LazyLogging
 import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
 import com.smort.actors
+import com.smort.helpers.{ JsonHelper, Preferences, Recommendation }
 import com.smort.messages.RecommendationSystemProtocol.Generate
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.{ ExecutionContext, ExecutionContextExecutor, Future }
 
