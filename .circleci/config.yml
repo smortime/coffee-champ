@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Grab cert
-          command: scp $DROPLET_USER@$DROPLET_HOST:/etc/letsencrypt/live/coffeechamp.dev/server.p12 /src/main/resource/keys/
+          command: scp -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_HOST:/etc/letsencrypt/live/coffeechamp.dev/server.p12 /src/main/resource/keys/
       - run:
           name: Build docker image on local
           command: sbt docker:publishLocal
