@@ -7,6 +7,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Check pwd
+          command: pwd && ls -la
+      - run:
           name: Grab cert
           command: scp -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_HOST:/etc/letsencrypt/live/coffeechamp.dev/server.p12 src/main/resource/keys/
       - run:
