@@ -1,15 +1,16 @@
-package com
+package com.smort
 
 import java.io.InputStream
 import java.security.{ KeyStore, SecureRandom }
 
 import akka.actor.ActorSystem
+import akka.http.scaladsl.server.Directives.{ complete, get }
+import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.server._
 import akka.http.scaladsl.{ ConnectionContext, Http, HttpsConnectionContext }
 import akka.stream.ActorMaterializer
 import akka.util.Timeout
-import ch.megard.akka.http.cors.scaladsl.CorsDirectives._
+import ch.megard.akka.http.cors.scaladsl.CorsDirectives.cors
 import com.smort.routes.RestApi
 import com.typesafe.scalalogging.LazyLogging
 import javax.net.ssl.{ KeyManagerFactory, SSLContext, TrustManagerFactory }
