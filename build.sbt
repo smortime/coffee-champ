@@ -3,7 +3,7 @@ enablePlugins(DockerPlugin)
 enablePlugins(AshScriptPlugin)
 
 name := "coffee-champ"
-version := "0.1"
+version := "0.2"
 scalaVersion := "2.12.8"
 organization := "com.smort"
 
