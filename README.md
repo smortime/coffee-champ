@@ -42,6 +42,11 @@ sbt test
 * Implement collaborative filtering with Spark ML
 * Upgrade UI...
 
+## Learning Goals
+* Become comfortable with actor model and Scala
+* Practice TDD and build out CI/CD workflows
+* Experiment with Spark ML library
+
 ## Project Owner
 
 * Schuyler Mortimer – schuymortimer@gmail.com
