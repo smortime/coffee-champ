@@ -48,7 +48,7 @@ jobs:
           command: pwd && ls -la
       - run:
           name: Deploy Web
-          command: scp ./web/index.html $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
+          command: scp -r ./web/. $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
       - run:
           name: Deploy Server
           command: |
