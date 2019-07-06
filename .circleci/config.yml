@@ -44,11 +44,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Change into web
-          command: cd web
-      - run:
           name: Deploy Web
-          command: scp -r . $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
+          command: scp -r ~/web/* $DROPLET_USER@$DROPLET_HOST:/srv/www/coffeechamp.dev/
       - run:
           name: Deploy Server
           command: |
