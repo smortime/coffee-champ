@@ -12,6 +12,7 @@ mainClass in Compile := Some("com.smort.Server")
 libraryDependencies ++= {
   val akkaVersion = "2.5.19"
   val akkaHttp = "10.1.8"
+  val sparkVersion = "2.4.3"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-http-core" % akkaHttp,
@@ -23,6 +24,8 @@ libraryDependencies ++= {
     "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
     "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
     "ch.megard" %% "akka-http-cors" % "0.4.1",
+    "org.apache.spark" %% "spark-core" % sparkVersion,
+    "org.apache.spark" %% "spark-mllib" % sparkVersion,
     "org.scalatest" %% "scalatest" % "3.0.5" % "test")
 }
 
