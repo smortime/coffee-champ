@@ -6,9 +6,6 @@ html {
 }
 
 // Typography
-.text-white-75 {
-  color: fade-out($white, .25);
-}
 
 // Custom horizontal rules
 hr.divider {
@@ -24,15 +21,6 @@ hr.light {
 // Button restyling
 .btn {
   font-family: $font-family-sans-serif;
-}
-
-.btn-xl {
-  padding: 1.25rem 2.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10rem;
 }
 
 // Page section padding
