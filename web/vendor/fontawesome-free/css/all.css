@@ -3866,9 +3866,6 @@ readers do not read off random characters that represent icons */
 .fa-trademark:before {
   content: "\f25c"; }
 
-.fa-traffic-light:before {
-  content: "\f637"; }
-
 .fa-train:before {
   content: "\f238"; }
 

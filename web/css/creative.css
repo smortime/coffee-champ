@@ -3106,7 +3106,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-light {
-    color: #f8f9fa;
+    color: #bfc0c1;
     border-color: #f8f9fa;
 }
 
@@ -3640,6 +3640,21 @@ input[type="button"].btn-block {
     position: absolute;
     clip: rect(0, 0, 0, 0);
     pointer-events: none;
+}
+
+.btn-social {
+    border-radius: 100%;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.25rem;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .input-group {

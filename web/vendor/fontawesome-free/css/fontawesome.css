@@ -2,18 +2,6 @@
  * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
-.fa,
-.fas,
-.far,
-.fal,
-.fab {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1; }
 
 .fa-lg {
   font-size: 1.33333em;
@@ -85,20 +73,6 @@
 .fa-pull-right {
   float: right; }
 
-.fa.fa-pull-left,
-.fas.fa-pull-left,
-.far.fa-pull-left,
-.fal.fa-pull-left,
-.fab.fa-pull-left {
-  margin-right: .3em; }
-
-.fa.fa-pull-right,
-.fas.fa-pull-right,
-.far.fa-pull-right,
-.fal.fa-pull-right,
-.fab.fa-pull-right {
-  margin-left: .3em; }
-
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
           animation: fa-spin 2s infinite linear; }
@@ -142,25 +116,6 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
           transform: scale(-1, 1); }
-
-.fa-flip-vertical {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-  -webkit-transform: scale(1, -1);
-          transform: scale(1, -1); }
-
-.fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-  -webkit-transform: scale(-1, -1);
-          transform: scale(-1, -1); }
-
-:root .fa-rotate-90,
-:root .fa-rotate-180,
-:root .fa-rotate-270,
-:root .fa-flip-horizontal,
-:root .fa-flip-vertical,
-:root .fa-flip-both {
-  -webkit-filter: none;
-          filter: none; }
 
 .fa-stack {
   display: inline-block;
@@ -424,9 +379,6 @@ readers do not read off random characters that represent icons */
 
 .fa-aws:before {
   content: "\f375"; }
-
-.fa-baby:before {
-  content: "\f77c"; }
 
 .fa-baby-carriage:before {
   content: "\f77d"; }
@@ -895,9 +847,6 @@ readers do not read off random characters that represent icons */
 
 .fa-chevron-circle-down:before {
   content: "\f13a"; }
-
-.fa-chevron-circle-left:before {
-  content: "\f137"; }
 
 .fa-chevron-circle-right:before {
   content: "\f138"; }
@@ -2096,9 +2045,6 @@ readers do not read off random characters that represent icons */
 .fa-hockey-puck:before {
   content: "\f453"; }
 
-.fa-holly-berry:before {
-  content: "\f7aa"; }
-
 .fa-home:before {
   content: "\f015"; }
 
@@ -2621,9 +2567,6 @@ readers do not read off random characters that represent icons */
 .fa-modx:before {
   content: "\f285"; }
 
-.fa-monero:before {
-  content: "\f3d0"; }
-
 .fa-money-bill:before {
   content: "\f0d6"; }
 
@@ -2839,9 +2782,6 @@ readers do not read off random characters that represent icons */
 
 .fa-penny-arcade:before {
   content: "\f704"; }
-
-.fa-people-carry:before {
-  content: "\f4ce"; }
 
 .fa-pepper-hot:before {
   content: "\f816"; }
@@ -3374,9 +3314,6 @@ readers do not read off random characters that represent icons */
 .fa-skyatlas:before {
   content: "\f216"; }
 
-.fa-skype:before {
-  content: "\f17e"; }
-
 .fa-slack:before {
   content: "\f198"; }
 
@@ -3857,9 +3794,6 @@ readers do not read off random characters that represent icons */
 .fa-torii-gate:before {
   content: "\f6a1"; }
 
-.fa-tractor:before {
-  content: "\f722"; }
-
 .fa-trade-federation:before {
   content: "\f513"; }
 
@@ -4106,9 +4040,6 @@ readers do not read off random characters that represent icons */
 .fa-venus-mars:before {
   content: "\f228"; }
 
-.fa-viacoin:before {
-  content: "\f237"; }
-
 .fa-viadeo:before {
   content: "\f2a9"; }
 
@@ -4249,9 +4180,6 @@ readers do not read off random characters that represent icons */
 
 .fa-wine-bottle:before {
   content: "\f72f"; }
-
-.fa-wine-glass:before {
-  content: "\f4e3"; }
 
 .fa-wine-glass-alt:before {
   content: "\f5ce"; }
