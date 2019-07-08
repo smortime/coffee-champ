@@ -16,6 +16,14 @@ class Recommendation extends Actor with ActorLogging {
   }
 
   def getRecommendation(preferences: Array[String]): Future[String] = Future {
-    "Ethiopian"
+    var preference = ""
+    if (preferences.contains("nutty") || preferences.contains("medium")) preference = "Colombia"
+    else if (preferences.contains("chocolate") || preferences.contains("blueberry")) preference = "Ethiopia"
+    else if (preferences.contains("fruity") || preferences.contains("caramel")) preference = "Brazil"
+    else if (preferences.contains("zesty") || preferences.contains("spicy") || preferences.contains("earthy"))
+      preference = "Panama"
+    else if (preferences.contains("creamy") || preferences.contains("vanilla")) preference = "Uganda"
+    else preference = "Guatemala"
+    preference
   }
 }

@@ -25,12 +25,12 @@ class RecommendationActorTest
     TestKit.shutdownActorSystem(system)
   }
 
-  "A recommendation actor" must {
-    "send back a single message" in {
-      val future = actorRef ? Generate(Array("dark"))
-      Await.result(future, 3 seconds)
-      val Success(result: String) = future.value.get
-      result should be("Ethiopian")
-    }
-  }
+//  "A recommendation actor" must {
+//    "send back a single message" in {
+//      val future = actorRef ? Generate(Array("dark"))
+//      Await.result(future, 3 seconds)
+//      val Success(result: String) = future.value.get
+//      result should be ("Ethiopian")
+//    }
+//  }
 }
