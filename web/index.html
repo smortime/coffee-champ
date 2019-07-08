@@ -106,7 +106,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.js"></script>
@@ -120,7 +119,7 @@
                     dataType: 'text',
                     type: 'post',
                     contentType: 'application/json',
-                    data: JSON.stringify({items: $("#coffeeText").val().trim().split(',')}),
+                    data: JSON.stringify({items: $("#coffeeText").val().trim().toLowerCase().split(',')}),
                     success: function(data, textStatus, jQxhr){
                         var items = JSON.parse(data);
                         // var htmlResponse = '<ul>';
