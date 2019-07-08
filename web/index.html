@@ -1,93 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="" crossorigin="anonymous">
+    <title>Coffee Champ</title>
 
+    <!-- Font Awesome Icons -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="css/creative.css" rel="stylesheet">
 </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Coffee Champ</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+<body id="top-page">
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">GitHub</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container" id="container">
-    <form id="my-form">
-        <div class="form-group">
-            <label for="coffeehelp">Preferred Coffee</label>
-            <input type="text" class="form-control" id="coffeeText" aria-describedby="coffeehelp"
-                   placeholder="Earthy, sweet, etc">
-            <small id="coffeehelp" class="form-text text-muted">Describe your perfect cup of coffee</small>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#top-page">Coffee Champ</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#recommendation">Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <button type="submit" class="btn btn-pill btn-dark btn-block">Submit</button>
-    </form>
-    <div class="response" id="response"></div>
-</div>
+    </nav>
 
+    <!-- Masthead -->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="font-weight-normal text-white font-weight-bold">LIST YOUR FAVORITE COFFEE TASTING NOTES</h1>
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <form id="my-form">
+                        <input type="text" class="form-control divider my-4" id="coffeeText" aria-describedby="coffeehelp"
+                               placeholder="Earthy, fruity, etc">
+                        <hr class="divider my-3">
+                        <button class="btn btn-primary btn-xl js-scroll-trigger" href="#recommendation" id="submit-btn">Submit</button>
+                        <div class="response" id="response"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <section class="page-section bg-primary" id="recommendation">
+        <div class="container">
+            <div class="row justify-content-center" id="outer-recommendation">
+                <div class="col-lg-8 text-center" id="recommendation-body">
+                    <h2 class="text-white mt-0">Coffee Recommendations</h2>
+                    <hr class="divider light my-4">
+                    <p class="text-white-50 mb-4">Add your coffee tasting note preferences to generate a recommendation!</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#top-page">Update Preferences</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="row justify-content-center" id="outer-about">
+                <div class="col-lg-8 text-center" id="about-body">
+                    <h2 class="text-center mt-0">About</h2>
+                    <hr class="divider my-4">
+                    <p class="text-muted mb-4">Coffee Champ is a web app for suggesting coffee regions based off your tastes. It was created by Schuyler Mortimer, a coffee obsessed software engineer, as a fun project to play around with different technology. It is currently in the early alpha stages but plan to create even more coffee centered services and hope that one day it makes an actual good recommendation.</p>
+                </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-2 text-md-center mb-5 mb-lg-0">
+                            <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/schuylermortimer">
+                                <i class="fab fa-fw fa-linkedin-in"></i>
+                            </a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/smortime">
+                                <i class="fab fa-fw fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity=""
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity=""
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity=""
-        crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
-    (function ($) {
-        function processForm( e ) {
-            $.ajax({
-                url: 'https://coffeechamp.dev:8080/create-recommendation',
-                dataType: 'text',
-                type: 'post',
-                contentType: 'application/json',
-                data: JSON.stringify({items: $("#coffeeText").val().trim().split(',')}),
-                success: function(data, textStatus, jQxhr){
-                    var items = JSON.parse(data);
-                    var htmlResponse = '<ul>';
-                    htmlResponse += items.recommendation;
-                    htmlResponse += '</ul>';
-                    $('#container').find('#response').html(htmlResponse);
-                    console.log( data );
-                },
-                error: function ( jqXhr, textStatus, errorThrown ) {
-                    console.log( errorThrown );
-                }
-            });
-            e.preventDefault();
-        }
-        $('#my-form').submit( processForm )
-    })(jQuery)
-</script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        (function ($) {
+            function processForm( e ) {
+                $.ajax({
+                    url: 'https://coffeechamp.dev:8080/create-recommendation',
+                    dataType: 'text',
+                    type: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({items: $("#coffeeText").val().trim().split(',')}),
+                    success: function(data, textStatus, jQxhr){
+                        var items = JSON.parse(data);
+                        // var htmlResponse = '<ul>';
+                        // htmlResponse += items.recommendation;
+                        // htmlResponse += '</ul>';
+                        var htmlResponse = "     <h2 class=\"text-white mt-0\">" + items.recommendation + "</h2>\n" +
+                            "                    <hr class=\"divider light my-4\">\n" +
+                            "                    <p class=\"text-white-50 mb-4\">"+ items.preferences.join(", ") + "</p>\n";
+                        $('#outer-recommendation').find('#recommendation-body').html(htmlResponse);
+                        $('html, body').animate({
+                            scrollTop: $("#recommendation").offset().top
+                        }, 2000);
+                        console.log( data );
+                    },
+                    error: function ( jqXhr, textStatus, errorThrown ) {
+                        console.log( errorThrown );
+                    }
+                });
+                e.preventDefault();
+            }
+            $('#my-form').submit( processForm )
+        })(jQuery)
+    </script>
+
 </body>
+
+
 </html>
