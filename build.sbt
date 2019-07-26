@@ -26,6 +26,7 @@ libraryDependencies ++= {
     "ch.megard" %% "akka-http-cors" % "0.4.1",
     "org.apache.spark" %% "spark-core" % sparkVersion,
     "org.apache.spark" %% "spark-mllib" % sparkVersion,
+    "com.github.swagger-akka-http" %% "swagger-akka-http" % "1.1.0",
     "org.scalatest" %% "scalatest" % "3.0.5" % "test")
 }
 

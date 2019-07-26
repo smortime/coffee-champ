@@ -13,6 +13,7 @@ import akka.util.Timeout
 import ch.megard.akka.http.cors.scaladsl.CorsDirectives.cors
 import com.smort.routes.RestApi
 import com.typesafe.scalalogging.LazyLogging
+import com.smort.swagger.SwaggerDocService
 import javax.net.ssl.{ KeyManagerFactory, SSLContext, TrustManagerFactory }
 
 import scala.concurrent.duration._
@@ -35,8 +36,9 @@ object Server extends App with LazyLogging {
   }
 
   val recommendationRoutes = new RestApi(system, Timeout(30 seconds)).route()
+  val swagger = SwaggerDocService.routes
 
-  val routes: Route = recommendationRoutes ~ heartbeat
+  val routes: Route = recommendationRoutes ~ heartbeat ~ swagger
 
   // Mannual HTTPS setup
   val password: Array[Char] = sys.env.getOrElse("CERT_PASSWORD", "").toCharArray
