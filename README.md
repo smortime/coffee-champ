@@ -19,7 +19,7 @@ To run the service:
 
 ```bash
 sbt docker:publishLocal
-docker run -e HOST=0.0.0 -e PORT=8080 -e CERT_PASSWORD=[UPDATE PASSWORD IF HAVE ONE] -p 8080:8080  coffee-champ:0.1
+docker run -e HOST=0.0.0.0 -e PORT=8080 -e CERT_PASSWORD=[UPDATE PASSWORD IF HAVE ONE] -p 8080:8080  coffee-champ:0.1
 ```
 
 To view web page just navigate to location of `coffee-champ/web/index.htnl` in browser of choice.
