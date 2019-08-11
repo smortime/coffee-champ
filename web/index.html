@@ -115,19 +115,15 @@
         (function ($) {
             function processForm( e ) {
                 $.ajax({
-                    url: 'https://coffeechamp.dev:8080/create-recommendation',
+                    url: 'https://coffeechamp.dev:8443/recommendation',
                     dataType: 'text',
                     type: 'post',
                     contentType: 'application/json',
-                    data: JSON.stringify({items: $("#coffeeText").val().trim().toLowerCase().split(',')}),
+                    data: JSON.stringify({preferences: $("#coffeeText").val().trim().toLowerCase().split(',')}),
                     success: function(data, textStatus, jQxhr){
-                        var items = JSON.parse(data);
-                        // var htmlResponse = '<ul>';
-                        // htmlResponse += items.recommendation;
-                        // htmlResponse += '</ul>';
-                        var htmlResponse = "     <h2 class=\"text-white mt-0\">" + items.recommendation + "</h2>\n" +
+                        var htmlResponse = "     <h2 class=\"text-white mt-0\">" + data + "</h2>\n" +
                             "                    <hr class=\"divider light my-4\">\n" +
-                            "                    <p class=\"text-white-50 mb-4\">"+ items.preferences.join(", ") + "</p>\n";
+                            "                    <p class=\"text-white-50 mb-4\">"+ $("#coffeeText").val().trim().toLowerCase().split(',').join(", ") + "</p>\n";
                         $('#outer-recommendation').find('#recommendation-body').html(htmlResponse);
                         $('html, body').animate({
                             scrollTop: $("#recommendation").offset().top
