@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/smortime/coffee-champ.svg?style=svg)](https://circleci.com/gh/smortime/coffee-champ)
-# [Coffee Champ](https://coffeechamp.dev)
+# [Coffee Champ]
 > Coffee recommendations are just a click away.
 
 Coffee Champ is an app that recommends regions to try coffee from based off your tastes preferences. I mainly started this app so I would have an excuse to experiment with new tech stacks / tools and get hands on experience with end to end development and deployment of a web app.
